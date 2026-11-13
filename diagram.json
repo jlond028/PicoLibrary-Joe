@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "author": "insert your name here",
+  "editor": "wokwi",
+  "parts": [
+    {
+      "type": "wokwi-pi-pico",
+      "id": "pico",
+      "top": 0,
+      "left": 0,
+      "attrs": { "env": "micropython-20231227-v1.22.0" }
+    },
+    {
+      "type": "wokwi-lcd1602",
+      "id": "lcd1",
+      "top": -140,
+      "left": -80,
+      "attrs": { "pins": "i2c" }
+    },
+    {
+      "type": "wokwi-led-ring",
+      "id": "ring1",
+      "top": -10,
+      "left": -210,
+      "attrs": { "pixels": "16" }
+    },
+    {
+      "type": "wokwi-hc-sr04",
+      "id": "ultrasonic1",
+      "top": -140,
+      "left": 180,
+      "attrs": { "distance": "50" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_green",
+      "top": 120,
+      "left": 160,
+      "attrs": { "color": "green", "label": "Happy / Reset" }
+    },
+    {
+      "type": "wokwi-pushbutton",
+      "id": "btn_red",
+      "top": 190,
+      "left": 160,
+      "attrs": { "color": "red", "label": "Unhappy" }
+    },
+    {
+      "type": "wokwi-buzzer",
+      "id": "bz1",
+      "top": 30,
+      "left": 210,
+      "attrs": { "volume": "0.5" }
+    }
+  ],
+  "connections": [
+    [ "lcd1:GND", "pico:GND.1", "black", [ "h0" ] ],
+    [ "lcd1:VCC", "pico:VBUS", "red", [ "h0" ] ],
+    [ "lcd1:SDA", "pico:GP0", "blue", [ "h0" ] ],
+    [ "lcd1:SCL", "pico:GP1", "yellow", [ "h0" ] ],
+    [ "ring1:GND", "pico:GND.2", "black", [ "v0" ] ],
+    [ "ring1:VCC", "pico:VBUS", "red", [ "v0" ] ],
+    [ "ring1:DIN", "pico:GP2", "green", [ "v0" ] ],
+    [ "ultrasonic1:VCC", "pico:VBUS", "red", [ "v0" ] ],
+    [ "ultrasonic1:GND", "pico:GND.3", "black", [ "v0" ] ],
+    [ "ultrasonic1:TRIG", "pico:GP3", "orange", [ "v0" ] ],
+    [ "ultrasonic1:ECHO", "pico:GP4", "purple", [ "v0" ] ],
+    [ "btn_green:1.l", "pico:GP14", "green", [ "h0" ] ],
+    [ "btn_green:2.l", "pico:GND.4", "black", [ "h0" ] ],
+    [ "btn_red:1.l", "pico:GP15", "red", [ "h0" ] ],
+    [ "btn_red:2.l", "pico:GND.4", "black", [ "h0" ] ],
+    [ "bz1:1", "pico:GND.5", "black", [ "v0" ] ],
+    [ "bz1:2", "pico:GP16", "cyan", [ "v0" ] ]
+  ],
+  "dependencies": {}
+}
